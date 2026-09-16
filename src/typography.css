@@ -1,0 +1,61 @@
+/* Readable supporting text, with the original display-heading scale preserved. */
+:root{--body-copy:15px;--small-copy:13px;--label-copy:11px}
+.identity{font-size:12px}.identity-sub{font-size:10px}nav{font-size:14px}nav sup{font-size:10px}
+.hero-top,.eyebrow{font-size:var(--label-copy);line-height:1.6}
+.hero-copy p,.about-content>p,.dialog-intro,dialog li,.dialog-stack{font-size:var(--body-copy);line-height:1.85}
+.hero-copy p{max-width:460px}
+.button,.text-link{font-size:12px}.hero-footer{font-size:10px;gap:20px}
+.preview-header{font-size:10px}.preview-footer{font-size:9px;line-height:1.6;gap:12px}
+.mini-pipeline>span{font-size:12px}.mini-pipeline b{font-size:10px}
+.ticker>.ticker-track{font-size:13px}
+.section-top{font-size:var(--label-copy);line-height:1.7}
+.section-heading>p{font-size:14px;line-height:1.85;max-width:370px}
+.project-meta{font-size:10px;line-height:1.6;gap:16px}
+.project-arrow{flex-shrink:0}
+.project-subtitle{font-size:14px;line-height:1.6}
+.project-copy p{font-size:14px;line-height:1.8;max-width:440px}
+.tags>span{font-size:10px;line-height:1.5;padding:6px 9px}
+.case-link{font-size:10px;line-height:1.6}
+.visual-label{font-size:9px;line-height:1.6;gap:10px}
+.visual-label>span:first-child,.visual-label>span:last-child{flex-shrink:0}
+.visual-label>span:nth-child(2){text-align:center}
+.node{font-size:9px;line-height:1.4;min-width:0;flex:0 1 23%;text-align:center}
+.node>span:last-child{max-width:100%;overflow-wrap:anywhere}
+.connector{min-width:5px;margin-inline:3px}
+.layers{font-size:9px;line-height:1.5;gap:12px}
+.visual-stats .mono{font-size:9px;line-height:1.5;letter-spacing:.5px}
+.visual-stats{gap:24px;padding-bottom:18px}
+.visual-stats>div{min-width:0;flex:1}
+.visual-corner{font-size:8px}
+.about-signature span,.timeline-item .mono,.achievement{font-size:11px;line-height:1.7}
+.timeline-item h3{font-size:19px}.timeline-item p,.timeline-item .timeline-detail{font-size:13px;line-height:1.85}
+.skill-number{font-size:11px}.skill-row h3{font-size:17px;line-height:1.5}
+.skill-row>div span{font-size:11px;line-height:1.5}
+.contact-intro{font-size:15px;line-height:1.8}
+.email{font-size:17px}.contact-bottom>.text-link{font-size:11px}
+.contact-bottom .socials{font-size:13px}
+.footer{font-size:10px;line-height:1.7;flex-wrap:wrap}
+.dialog-flow{font-size:11px;overflow-wrap:anywhere}dialog h3{font-size:18px}
+@media(max-width:1000px){.identity{font-size:11px}.identity-sub{font-size:9px}.section-top{font-size:10px}.section-heading>p{max-width:310px}.project-meta{font-size:9px}.visual-label{font-size:8px}.node{font-size:8px}.visual-stats .mono{font-size:8px}.hero-footer{flex-wrap:wrap;height:auto;min-height:65px;padding-block:16px}.hero-footer>span{display:none}.motion-controls{gap:16px}}
+@media(max-width:700px){
+  :root{--body-copy:14px;--small-copy:12px;--label-copy:10px}
+  .identity{font-size:10px;letter-spacing:.7px}.identity-sub{font-size:8px;letter-spacing:1px}nav{font-size:12px;gap:14px}nav sup{font-size:9px}
+  .hero-top{font-size:9px;gap:12px}.hero-coordinate{font-size:8px;white-space:nowrap}
+  .hero-side{font-size:7px;max-width:14%;overflow-wrap:anywhere}
+  .hero-footer{font-size:9px;gap:12px}.hero-footer a span{margin-right:5px}.motion-controls{gap:12px}
+  .button,.text-link{font-size:11px}.hero-actions{gap:24px}
+  .preview-header{font-size:9px}.preview-footer{font-size:8px}.mini-pipeline>span{font-size:11px}
+  .ticker>.ticker-track{font-size:11px}
+  .section-top{font-size:9px;gap:14px}.section-top>span:last-child{max-width:135px;flex-shrink:0}
+  .section-heading>p{font-size:13px;max-width:100%}
+  .project-copy{padding:22px}.project-meta{font-size:9px;gap:12px;margin-bottom:14px}
+  .project-subtitle{font-size:13px}.project-copy p{font-size:13px;line-height:1.75;margin-block:13px 16px}
+  .tags>span{font-size:9px;padding:5px 7px}.case-link{font-size:10px;margin-top:19px}
+  .visual-label{font-size:8px}.visual-label>span:nth-child(2){max-width:72%}
+  .node{font-size:8px}.layers{font-size:8px;gap:10px}.visual-stats .mono{font-size:8px}.visual-corner{font-size:7px}
+  .about-signature span,.timeline-item .mono,.achievement{font-size:10px}
+  .skill-row h3{font-size:16px}.skill-row>div span{font-size:10px;padding:7px 9px}
+  .contact-intro{font-size:13px;max-width:100%}.email{font-size:14px}.contact-bottom>.text-link{font-size:10px}.contact-bottom .socials{font-size:12px}
+  .footer{font-size:9px;gap:14px}.dialog-flow{font-size:10px}dialog li{font-size:14px}
+}
+@media(max-width:360px){.header{padding-inline:5%}.identity{gap:7px;font-size:9px}.identity-sub{font-size:7px}nav{gap:10px;font-size:11px}.nav-contact{padding:9px 8px}.section-top>span:last-child{max-width:100px}.motion-controls{gap:16px}.hero-footer{justify-content:flex-start}.hero-coordinate{white-space:normal;text-align:right}.visual-label{font-size:7px}.layers{gap:7px}.email{font-size:13px}}

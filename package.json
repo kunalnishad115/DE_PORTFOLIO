@@ -1,0 +1,8 @@
+{
+  "name": "kunal-data-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite --host 127.0.0.1", "build": "vite build", "preview": "vite preview --host 127.0.0.1", "test:ui": "node tests/browser.mjs" },
+  "devDependencies": { "vite": "^6.3.6", "@playwright/test": "^1.55.0" }
+}
