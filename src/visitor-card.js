@@ -6,9 +6,9 @@ export function initVisitorCard(isEnabled) {
   host.setAttribute('aria-label', 'Your portfolio visitor pass');
   host.innerHTML = `<div class="visitor-stage">
     <div class="visitor-fallback"><span class="pass-brand">k.n</span><span>KUNAL NISHAD / PORTFOLIO</span><strong>Good to have<br>you here.</strong><span class="pass-fallback-name">VISITOR</span><small>ALL ACCESS · 2026</small></div>
-    <canvas aria-label="Hanging visitor pass. Drag and release to swing it." role="img"></canvas>
-    <span class="visitor-hint">DRAG IT. MAKE YOURSELF AT HOME.</span>
-  </div><form class="visitor-form"><label for="visitor-name">Make this pass yours <span>GUEST / 001</span></label><div><input id="visitor-name" name="visitor" autocomplete="given-name" maxlength="20" placeholder="Your name" aria-label="Name on your visitor pass"><button type="submit">Apply <span aria-hidden="true">↗</span></button><button type="button" class="visitor-replay" aria-label="Drop the visitor pass again" title="Drop again">↻</button></div><p class="visitor-status" role="status" aria-live="polite"></p></form>`;
+    <canvas aria-label="Hanging visitor pass. Drag and release to swing it. Shift-drag or use arrow keys to rotate." role="img"></canvas>
+    <span class="visitor-hint">DRAG TO STRETCH · SHIFT + DRAG TO SPIN</span>
+  </div><form class="visitor-form"><label for="visitor-name">Make this pass yours <span>GUEST / 001</span></label><div><input id="visitor-name" name="visitor" autocomplete="given-name" maxlength="20" placeholder="Your name" aria-label="Name on your visitor pass"><button type="submit">Apply <span aria-hidden="true">&#8599;</span></button><button type="button" class="visitor-replay" aria-label="Drop the visitor pass again" title="Drop again">&#8635;</button></div><p class="visitor-status" role="status" aria-live="polite"></p></form>`;
   document.querySelector('.pipeline-preview').replaceWith(host);
   let card, visible = false, loading = false;
   const canvas = host.querySelector('canvas');

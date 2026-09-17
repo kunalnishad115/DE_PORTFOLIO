@@ -1,0 +1,25 @@
+/* One palette for every project, including diagrams and interaction states. */
+.project{background:#0b0b0b;border-color:#38302a;border-top:2px solid var(--accent)}
+.project:before{background:radial-gradient(350px circle at var(--mouse-x,-400px) var(--mouse-y,-400px),#ec925810,transparent)}
+.project:hover{border-color:var(--accent)}
+.project .project-visual{background-color:#111;border-color:#453226;background-image:linear-gradient(#ec925809 1px,transparent 1px),linear-gradient(90deg,#ec925809 1px,transparent 1px)}
+.project .node,.project .visual-label,.project .layers{color:#c0b5ac}
+.project .node-icon{background:#19130f;border-color:#a65f30;color:var(--accent);box-shadow:4px 4px #070707}
+.project .connector{background:#9b5b33}
+.project .connector:after,.project .layers b{color:var(--accent)}
+.project .connector i{background:#ffac70}
+.project .layer-dot{background:#f07528}
+.project .layer-1{background:#ec9258}
+.project .layer-2{background:#ffc391}
+.project .visual-stats{border-color:#493325}
+.project .visual-stats strong{color:var(--accent);font-weight:650}
+.project .visual-stats .mono,.project .visual-corner{color:#b5aaa2}
+.project-meta,.case-link{color:var(--accent)}
+.project-arrow{border-color:#85502e;color:var(--accent);background:#17110e}
+.project h3{font-weight:650;color:#f4f1ed}
+.project-subtitle{color:#dcc8b9}
+.project-copy p{color:#aaa5a0}
+.project .tags>span{background:#15110e;border-color:#4b3425;color:#e0b99c}
+.motion-on .project:hover .project-visual{border-color:var(--accent)}
+.motion-on .stack-ready>.project:after{background:#050505}
+@keyframes node-breathe{0%,100%{box-shadow:4px 4px #070707;filter:brightness(1)}50%{box-shadow:4px 4px #070707,0 0 20px #ec925822;filter:brightness(1.3)}}
