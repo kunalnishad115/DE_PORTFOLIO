@@ -1,0 +1,28 @@
+﻿.hero-bottom{align-items:center;padding-top:12px;gap:36px}
+.visitor-pass{width:460px;max-width:50%;flex-shrink:0;position:relative}
+.visitor-stage{position:relative;height:440px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 67% 60%,#ef873313,transparent 65%)}
+.visitor-stage:before{content:'';position:absolute;top:0;left:50%;width:24px;height:4px;border-radius:4px;background:#68685e;box-shadow:0 2px 7px #000;transform:translateX(-50%)}
+.visitor-stage canvas{display:block;width:100%;height:100%;position:relative;z-index:2;touch-action:pan-y;opacity:0;transition:opacity .2s}
+.visitor-pass[data-renderer=webgl] canvas{opacity:1;touch-action:none}
+.visitor-overlay{position:fixed;inset:0;width:100vw;height:100vh;z-index:40;pointer-events:none}
+.visitor-drag-handle{position:fixed;z-index:41;padding:0;border:0;background:transparent;touch-action:none;cursor:grab;color:transparent}
+.visitor-drag-handle:focus-visible{outline:1px solid #ec9258;outline-offset:4px;border-radius:8px}
+.visitor-hint{position:absolute;bottom:9px;left:0;right:0;text-align:center;color:#808378;font:8px var(--mono);letter-spacing:1.3px;pointer-events:none}
+.visitor-form{padding:9px 34px 0}
+.visitor-form label{display:flex;justify-content:space-between;gap:12px;color:#b8b8aa;font:11px var(--mono);margin-bottom:12px}
+.visitor-form label span{color:#74786c;font-size:8px;letter-spacing:1px;align-self:center}
+.visitor-form>div{display:flex;gap:7px}
+.visitor-form input{min-width:0;width:100%;border:1px solid #383c32;border-radius:5px;background:#11130f;color:#e7e8df;padding:11px 10px;font:11px var(--mono)}
+.visitor-form input:focus-visible{outline:1px solid #ec9258;outline-offset:2px}
+.visitor-form button{border:1px solid #55584c;border-radius:5px;background:#e4e4d8;color:#191c15;padding:9px 12px;font:11px var(--mono);white-space:nowrap}
+.visitor-form button span{margin-left:6px}
+.visitor-form .visitor-replay{background:transparent;color:#c3c5b8;font-size:19px;padding:5px 10px}
+.visitor-form button:disabled{opacity:.35;cursor:default}
+.visitor-status{min-height:15px;font:10px/1.5 var(--mono);color:#bcaa91;margin:9px 0 0}
+.visitor-fallback{position:absolute;top:133px;left:50%;transform:translateX(-50%);width:177px;height:240px;padding:18px;background:linear-gradient(125deg,#171916,#080a08);border:1px solid #3b3e34;border-radius:10px;display:flex;flex-direction:column;color:#e8e8df;gap:12px;box-shadow:8px 13px 20px #0005}
+.visitor-fallback:before{content:'';position:absolute;height:133px;width:15px;background:#1e211b;border-inline:1px solid #4d5042;top:-134px;left:calc(50% - 8px)}
+.visitor-fallback .pass-brand{font-size:34px;font-weight:700;letter-spacing:-3px}.visitor-fallback>span:nth-child(2){font:6px var(--mono);letter-spacing:1px}.visitor-fallback strong{font-size:21px;line-height:1.15}.pass-fallback-name{font:13px var(--mono);margin-top:auto}.visitor-fallback small{font:7px var(--mono);color:#a49b86}
+.visitor-pass[data-renderer=webgl] .visitor-fallback{visibility:hidden}
+@media(min-width:1500px){.visitor-pass{width:510px}.visitor-stage{height:470px}}
+@media(max-width:700px){.hero-bottom{gap:18px}.visitor-pass{max-width:100%;width:100%;align-self:center}.visitor-stage{height:410px}.visitor-form{padding-inline:16px}.visitor-form label{font-size:10px}.visitor-hint{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.visitor-stage canvas{transition:none}}

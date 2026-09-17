@@ -1,4 +1,14 @@
 /* Motion stays on transforms/opacity wherever possible. */
+.about{background:#101110;border-block-color:#2b2d29}
+.contact{position:relative;isolation:isolate;background:#101110;border-top-color:#2b2d29;overflow:hidden}
+.contact-wind{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.contact-intro{color:#aaa69e}
+.contact h2 em{color:#ec9258}
+.contact-bottom{border-top-color:#36332e}
+.contact-bottom .socials,.contact-bottom>.text-link{color:#bcb4a7}
+.contact .section-top{color:#a39b90}
+.contact h2{opacity:1;transform:none}
+.motion-on .contact h2.animated-heading.reveal:not(.revealed){clip-path:none;transform:none}
 .project-list.stack-ready{display:flex;flex-direction:column;gap:64px;padding-bottom:30vh;isolation:isolate}
 .motion-on .stack-ready>.project{position:sticky;top:calc(64px + var(--stack-index)*16px);z-index:calc(1 + var(--stack-index));flex:none;transform:scale(var(--stack-scale,1));transform-origin:center top;transition:border-color .3s;box-shadow:0 -16px 40px #0005;scroll-margin-top:80px}
 .motion-on .stack-ready>.project:after{content:'';position:absolute;inset:0;background:#050704;opacity:var(--stack-shade,0);pointer-events:none;z-index:3}

@@ -1,8 +1,15 @@
+﻿import { initContactWind } from './wind.js';
+import { initVisitorCard } from './visitor-card.js';
+import { initSmoothScroll } from './scroll.js';
+
 export function initMotion({ clickSound }) {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const root = document.documentElement;
   let enabled = !preference.matches;
+  const syncWind = initContactWind(() => enabled);
+  const syncVisitorCard = initVisitorCard(() => enabled);
+  const stopScroll = initSmoothScroll(() => enabled);
   let frame = 0;
   let flapFrame = 0;
   let lastReplay = 0;
@@ -96,10 +103,11 @@ export function initMotion({ clickSound }) {
     if (stackFits && enabled) {
       // Read all positions before writing styles to avoid repeated layout work.
       const positions = cards.map(card => card.getBoundingClientRect().top);
+      const heights = cards.map(card => card.offsetHeight);
       cards.forEach((card, index) => {
         const nextTop = positions[index + 1];
         const pin = stackBase + (index + 1) * stackStep;
-        const overlap = nextTop === undefined ? 0 : Math.min(1, Math.max(0, (pin + card.offsetHeight - nextTop) / card.offsetHeight));
+        const overlap = nextTop === undefined ? 0 : Math.min(1, Math.max(0, (pin + heights[index] - nextTop) / heights[index]));
         card.style.setProperty('--stack-scale', (1 - overlap * 0.035).toFixed(4));
         card.style.setProperty('--stack-shade', (overlap * 0.2).toFixed(3));
       });
@@ -133,6 +141,9 @@ export function initMotion({ clickSound }) {
   document.querySelectorAll('.section-heading h2, .about h2, .contact h2').forEach(heading => heading.classList.add('animated-heading'));
 
   function applyState() {
+    syncWind();
+    syncVisitorCard();
+    stopScroll();
     root.classList.toggle('motion-on', enabled);
     root.classList.toggle('motion-paused', !enabled);
     toggle.textContent = enabled ? 'Ⅱ MOTION ON' : '▷ MOTION OFF';
@@ -151,3 +162,4 @@ export function initMotion({ clickSound }) {
   applyState();
   replay();
 }
+

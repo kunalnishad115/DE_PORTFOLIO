@@ -1,0 +1,65 @@
+﻿import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1050}});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='warning')console.log(m.text())});
+try{
+await page.goto('http://127.0.0.1:5173',{waitUntil:'networkidle'});
+await page.locator('.visitor-pass[data-renderer="webgl"]').waitFor();
+const canvas=page.locator('.visitor-overlay');
+await page.waitForTimeout(200);
+const early=await canvas.getAttribute('data-position');
+await page.waitForTimeout(2500);
+assert.notEqual(await canvas.getAttribute('data-position'),early,'The pass should fall and settle');
+assert.equal(await page.locator('.companion').count(),0);
+await page.screenshot({path:'test-results/visitor-desktop.png'});
+await page.locator('#visitor-name').fill('Alex');
+await page.locator('.visitor-form button[type=submit]').click();
+assert.equal(await canvas.getAttribute('data-name'),'Alex');
+assert.match(await page.locator('.visitor-status').textContent(),/Welcome, Alex/);
+const rect=await page.locator('.visitor-drag-handle').boundingBox();
+await page.mouse.move(rect.x+rect.width/2,rect.y+rect.height/2);
+await page.mouse.down();
+assert.equal(await canvas.getAttribute('data-dragging'),'true');
+await page.mouse.move(180,180,{steps:25});
+await page.waitForTimeout(100);
+const held=await canvas.getAttribute('data-position');
+const stretched=await page.locator('.visitor-drag-handle').boundingBox();
+assert.ok(Math.abs(stretched.x+stretched.width/2-180)<30,'Card must follow the pointer across the screen');
+assert.ok(Math.abs(stretched.y+stretched.height/2-180)<30,'Card must reach the top of the screen');
+await page.screenshot({path:'test-results/visitor-drag.png'});
+await page.mouse.move(1250,850,{steps:25});
+await page.waitForTimeout(100);
+const lower=await page.locator('.visitor-drag-handle').boundingBox();
+assert.ok(Math.abs(lower.y+lower.height/2-850)<35,'Card must reach the bottom of the screen');
+await page.mouse.up();
+await page.waitForTimeout(1200);
+assert.equal(await canvas.getAttribute('data-dragging'),'false');
+assert.notEqual(await canvas.getAttribute('data-position'),held);
+await page.locator('.visitor-replay').click();
+assert.ok(Number(await canvas.getAttribute('data-screen-top')) < -200,'Replay begins above the viewport');
+await page.waitForTimeout(100);
+const dropped=await canvas.getAttribute('data-position');
+await page.waitForTimeout(1000);
+assert.notEqual(await canvas.getAttribute('data-position'),dropped);
+await page.locator('#motion-toggle').click();
+assert.equal(await canvas.getAttribute('data-running'),'false');
+const paused=await canvas.getAttribute('data-position');
+await page.waitForTimeout(300);assert.equal(await canvas.getAttribute('data-position'),paused);
+await page.locator('#motion-toggle').click();
+for(const width of [375,390,768,1440]){
+await page.setViewportSize({width,height:900});
+assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow at ${width}`);
+}
+await page.setViewportSize({width:390,height:844});
+await page.locator('.visitor-pass').scrollIntoViewIfNeeded();
+await page.waitForTimeout(800);
+await page.screenshot({path:'test-results/visitor-mobile.png'});
+await page.emulateMedia({reducedMotion:'reduce'});
+await page.waitForFunction(()=>document.querySelector('.visitor-overlay').dataset.running==='false');
+assert.equal(await canvas.getAttribute('data-running'),'false');
+assert.ok(await canvas.isVisible());
+assert.deepEqual(errors,[]);
+console.log('PASS: drop, drag, release, personalization, replay, motion controls, reduced motion, responsive layout, no browser errors.');
+}finally{await browser.close()}
+
