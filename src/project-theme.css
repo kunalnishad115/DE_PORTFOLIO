@@ -1,25 +1,53 @@
-/* One palette for every project, including diagrams and interaction states. */
-.project{background:#0b0b0b;border-color:#38302a;border-top:2px solid var(--accent)}
-.project:before{background:radial-gradient(350px circle at var(--mouse-x,-400px) var(--mouse-y,-400px),#ec925810,transparent)}
-.project:hover{border-color:var(--accent)}
-.project .project-visual{background-color:#111;border-color:#453226;background-image:linear-gradient(#ec925809 1px,transparent 1px),linear-gradient(90deg,#ec925809 1px,transparent 1px)}
-.project .node,.project .visual-label,.project .layers{color:#c0b5ac}
-.project .node-icon{background:#19130f;border-color:#a65f30;color:var(--accent);box-shadow:4px 4px #070707}
-.project .connector{background:#9b5b33}
-.project .connector:after,.project .layers b{color:var(--accent)}
-.project .connector i{background:#ffac70}
-.project .layer-dot{background:#f07528}
-.project .layer-1{background:#ec9258}
-.project .layer-2{background:#ffc391}
-.project .visual-stats{border-color:#493325}
-.project .visual-stats strong{color:var(--accent);font-weight:650}
-.project .visual-stats .mono,.project .visual-corner{color:#b5aaa2}
-.project-meta,.case-link{color:var(--accent)}
-.project-arrow{border-color:#85502e;color:var(--accent);background:#17110e}
-.project h3{font-weight:650;color:#f4f1ed}
-.project-subtitle{color:#dcc8b9}
-.project-copy p{color:#aaa5a0}
-.project .tags>span{background:#15110e;border-color:#4b3425;color:#e0b99c}
-.motion-on .project:hover .project-visual{border-color:var(--accent)}
-.motion-on .stack-ready>.project:after{background:#050505}
-@keyframes node-breathe{0%,100%{box-shadow:4px 4px #070707;filter:brightness(1)}50%{box-shadow:4px 4px #070707,0 0 20px #ec925822;filter:brightness(1.3)}}
+/* Dark metallic surfaces with warm orange edges and reflected light. */
+.project{
+  --card-ink:#f4f1ed;--card-muted:#b0aaa4;--card-accent:var(--accent);
+  border:1px solid #443328;border-radius:18px;
+  background:linear-gradient(120deg,#1c1917 0%,#111110 38%,#0c0c0c 72%,#191410 100%);
+  color:var(--card-ink);
+  box-shadow:inset 0 1px 0 #ffc39120,inset 0 -1px 0 #0009,0 12px 30px #0005;
+  transition:border-color .35s,box-shadow .35s;
+}
+.project:before{background:radial-gradient(420px circle at var(--mouse-x,-400px) var(--mouse-y,-400px),#ec925814,transparent 70%);opacity:0;transition:opacity .4s}
+.project:hover,.project:focus-visible{border-color:var(--accent)}
+.project:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.motion-on .stack-ready>.project{box-shadow:inset 0 1px 0 #ffc39120,inset 0 -1px 0 #0009,0 -12px 36px #0006,0 18px 45px #0005;transition:border-color .35s,box-shadow .35s}
+.project .project-visual{
+  overflow:hidden;isolation:isolate;border:1px solid #513727;border-radius:12px;background-color:#141110;
+  background-image:linear-gradient(#ec925809 1px,transparent 1px),linear-gradient(90deg,#ec925809 1px,transparent 1px),radial-gradient(ellipse at 12% 12%,#ec925810 0%,transparent 60%),linear-gradient(135deg,#221a14,#151311 46%,#100f0e 74%,#23170f);
+  background-size:26px 26px,26px 26px,100% 100%,100% 100%;
+  box-shadow:inset 0 1px 2px #ffc39116,0 2px 3px #0005,0 12px 22px #0003;
+}
+.project .project-visual:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:conic-gradient(from 210deg at 75% 30%,transparent,#ec925812,transparent 25%,#ab55220c,transparent 55%,#ec925814,transparent 80%)}
+.project .project-visual:after{content:'';position:absolute;inset:-30% -70%;pointer-events:none;background:linear-gradient(115deg,transparent 38%,#ec925800 43%,#ffc39124 50%,#ec925810 54%,transparent 62%);transform:translateX(-65%);opacity:0}
+.project .node,.project .visual-label,.project .layers{color:#b9aa9e}
+.project .visual-label .accent{color:var(--card-accent)}
+.project .node-icon{position:relative;border:1px solid #825334;border-radius:12px;background:linear-gradient(145deg,#433023 3%,#29211c 35%,#121110 67%,#382519 100%);color:var(--accent);text-shadow:0 1px 0 #ffc39120;box-shadow:inset 0 1px 1px #ffc39135,inset 0 -2px 2px #0009,0 3px 0 #352215,0 8px 12px #0006}
+.project .connector{background:#785034}
+.project .connector:after,.project .layers b{color:#bc875f}
+.project .connector i{background:#ffac70;box-shadow:0 0 6px #ec925870}
+.project .layer-dot{background:#ba662e}.project .layer-1{background:#ec9258}.project .layer-2{background:#ffc391}
+.project .visual-stats{border-color:#a16d4438}
+.project .visual-stats strong{color:var(--accent);font-weight:650;text-shadow:0 1px 0 #ffc39120}
+.project .visual-stats .mono,.project .visual-corner{color:#b4a498}
+.project .project-meta,.project .case-link{color:var(--card-accent)}
+.project .project-arrow{border-color:#735034;border-radius:50%;color:var(--accent);background:linear-gradient(145deg,#35251b,#17120f);box-shadow:inset 0 1px 0 #ffc39120,0 2px 4px #0005;transition:transform .35s,background .35s,color .35s}
+.project h3{font-weight:650;color:var(--card-ink)}
+.project .project-subtitle{color:#d5c4b7}
+.project .project-copy p{color:var(--card-muted)}
+.project .tags>span{background:#211813b3;border-color:#513a2a;color:#d7b89f;border-radius:6px;box-shadow:inset 0 1px 0 #ffc39114}
+.project .case-link>span{transition:transform .35s}
+.project .project-cursor{border-color:#9d6036;background:#1a1410ed;color:var(--accent);box-shadow:0 4px 14px #0005}
+.motion-on .stack-ready>.project:after{background:#050505;border-radius:inherit}
+@media(hover:hover) and (pointer:fine){
+  .motion-on .project:hover:before{opacity:1}
+  .motion-on .project:hover .project-visual{border-color:#a46c42}
+  .motion-on .project:hover .project-visual:after{animation:card-sheen 1.2s ease-out both}
+  .motion-on .project:hover .node-icon{animation:card-float 2.8s ease-in-out infinite}
+  .motion-on .project:hover .project-arrow{transform:rotate(-8deg);background:var(--accent);color:#17110d;border-color:var(--accent)}
+  .motion-on .project:hover .case-link>span{transform:translate(3px,-3px)}
+}
+.motion-on .project:focus-visible .project-visual:after{animation:card-sheen 1.2s ease-out both}
+@keyframes card-sheen{0%{transform:translateX(-65%);opacity:0}20%{opacity:.75}80%{opacity:.75}100%{transform:translateX(65%);opacity:0}}
+@keyframes card-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(max-width:700px){.project{border-radius:14px}.project .project-visual{border-radius:10px}.project .node-icon{border-radius:10px}}
+@media(prefers-reduced-motion:reduce){.project .project-visual:after,.project .node-icon{animation:none!important}.project:before{display:none}}

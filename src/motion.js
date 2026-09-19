@@ -1,12 +1,14 @@
 ﻿import { initContactWind } from './wind.js';
 import { initVisitorCard } from './visitor-card.js';
 import { initSmoothScroll } from './scroll.js';
+import { initContactWords } from './contact-words.js';
 
 export function initMotion({ clickSound }) {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const root = document.documentElement;
   let enabled = !preference.matches;
+  const syncContactWords = initContactWords(() => enabled);
   const syncWind = initContactWind(() => enabled);
   const syncVisitorCard = initVisitorCard(() => enabled);
   const stopScroll = initSmoothScroll(() => enabled);
@@ -141,6 +143,7 @@ export function initMotion({ clickSound }) {
   document.querySelectorAll('.section-heading h2, .about h2, .contact h2').forEach(heading => heading.classList.add('animated-heading'));
 
   function applyState() {
+    syncContactWords();
     syncWind();
     syncVisitorCard();
     stopScroll();
@@ -162,4 +165,3 @@ export function initMotion({ clickSound }) {
   applyState();
   replay();
 }
-
